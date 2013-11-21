@@ -7,8 +7,10 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
@@ -51,17 +53,19 @@ public class ChatClient extends Application {
         // tag::client-ui[]
         GridPane grid = new GridPane();
         grid.setMaxHeight(Double.MAX_VALUE);
+        grid.setHgap(5);
+        grid.setVgap(5);
         grid.setAlignment(Pos.CENTER);
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(25, 10, 25, 10));
-        grid.getColumnConstraints().addAll(new ColumnConstraints(), new ColumnConstraints(50));
+        grid.getColumnConstraints().addAll(new ColumnConstraints(), new ColumnConstraints(60));
 
-        Text title = new Text("Chat Example");
-        title.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
-        grid.add(title, 0, 0, 2, 1);
+        Label titleLabel = new Label("Chat Example");
+        titleLabel.setMaxWidth(Double.MAX_VALUE);
+        titleLabel.setStyle("-fx-padding: 10 10 10 10; -fx-background-color: #97b54b; -fx-text-fill: white");
+        titleLabel.setFont(Font.font("Tahoma", FontWeight.NORMAL, 24));
+        grid.add(titleLabel, 0, 0, 2, 1);
 
         final TextArea chatArea = new TextArea();
+        // chatArea.setStyle("-fx-padding: 10 10 10 10");
         chatArea.setEditable(false);
         chatArea.setText("");
         chatArea.setMinHeight(250);
@@ -69,10 +73,25 @@ public class ChatClient extends Application {
 
         final TextField textField = new TextField();
         textField.setMinWidth(250);
+        textField.setMinHeight(25);
         grid.add(textField, 0, 2);
 
         final Button sendButton = new Button("Send");
-        sendButton.setMinWidth(50);
+        sendButton.setMinWidth(60);
+        sendButton.setMinHeight(25);
+        final String NORMAL_BUTTON_STYLE = "-fx-padding: 5 5 5 5; -fx-background-radius: 0; -fx-background-color: #97b54b; -fx-text-fill: white";
+        final String HOVERED_BUTTON_STYLE = "-fx-padding: 5 5 5 5; -fx-background-radius: 0; -fx-background-color: #b0d257; -fx-text-fill: white";
+        sendButton.setStyle(NORMAL_BUTTON_STYLE);
+        sendButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            @Override public void handle(MouseEvent mouseEvent) {
+                sendButton.setStyle(HOVERED_BUTTON_STYLE);
+            }
+        });
+        sendButton.setOnMouseExited(new EventHandler<MouseEvent>() {
+            @Override public void handle(MouseEvent mouseEvent) {
+                sendButton.setStyle(NORMAL_BUTTON_STYLE);
+            }
+        });
         grid.add(sendButton, 1, 2);
 
         Scene scene = new Scene(grid, 350, 350);
@@ -100,7 +119,9 @@ public class ChatClient extends Application {
 
             @Override
             public void handle(ActionEvent actionEvent) {
-                chatProducer.publish("#" + (messageNumber++) + ": " + textField.getText()); // <1>
+                if (textField.getText() != null && textField.getText().trim().length() > 0)
+                    chatProducer.publish("#" + (messageNumber++) + ": " + textField.getText()); // <1>
+
                 textField.clear();
                 textField.requestFocus();
             }

@@ -53,9 +53,10 @@
 
     <!-- tag::client-ui[] -->
     <s:VGroup width="100%" height="100%" gap="10" paddingBottom="10" paddingTop="10" paddingLeft="10" paddingRight="10">
-        <s:Label text="Chat Example" fontSize="20"/>
+        <s:Label text="Chat Example" fontSize="24" fontFamily="Tahoma" width="100%" height="50" verticalAlign="middle"
+                 backgroundColor="#97b54b" color="white" paddingLeft="5" paddingRight="5" paddingTop="5" paddingBottom="5"/>
 
-        <s:TextArea id="chatArea" width="100%" height="100%"/>
+        <s:TextArea id="chatArea" width="100%" height="100%" editable="false"/>
 
         <s:HGroup width="100%">
             <s:TextInput id="textInput" width="100%" enter="send()"/> <!--1-->
