@@ -1,0 +1,19 @@
+== The Servlet 3 server application
+:icons: font
+:rootdir: ../../../..
+:srcdir: {rootdir}/server-servlet3/src
+
+The server application is basically a simple Servlet 3 application exposing one messaging destination.
+
+The necessary configuration for GraniteDS is very simple and consists in adding an annotated configuration class to
+trigger the startup of GraniteDS (using a Servlet 3 container initializer behind the scenes):
+
+[[server.destination]]
+[source,java,indent=0]
+.main/java/org/graniteds/tutorial/chat/server/ChatApplication.java
+----
+include::{srcdir}/main/java/org/graniteds/tutorial/chat/server/ChatApplication.java[tags=server-filter]
+----
+<1> The +ServerFilter+ annotation triggers GraniteDS initialization.
+<2> The property +chatTopic+ annotated with +MessagingDestination+ indicates that we want to setup a messaging destination
+with the name of the property. See the client usage <<client.destination,here>>.

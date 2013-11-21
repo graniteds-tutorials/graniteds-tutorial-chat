@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<s:Application
+        xmlns:fx="http://ns.adobe.com/mxml/2009"
+        xmlns:mx="library://ns.adobe.com/flex/mx"
+        xmlns:s="library://ns.adobe.com/flex/spark"
+        preinitialize="init()"
+        creationComplete="textInput.setFocus()">
+
+    <fx:Script>
+        <![CDATA[
+        import mx.messaging.events.MessageEvent;
+        import mx.messaging.messages.AsyncMessage;
+
+        import org.granite.gravity.Consumer;
+        import org.granite.gravity.Producer;
+        import org.granite.tide.spring.Spring;
+
+        private var chatConsumer:Consumer;
+        private var chatProducer:Producer;
+
+        private function init():void {
+            // tag::client-setup[]
+            Spring.getInstance().initApplication(); // <1>
+
+            chatConsumer = Spring.getInstance().mainServerSession.getConsumer("long-polling", "chatTopic"); // <2>
+            chatConsumer.topic = "room";
+            chatProducer = Spring.getInstance().mainServerSession.getProducer("long-polling", "chatTopic");
+            chatProducer.topic = "room";
+
+            chatConsumer.subscribe(); // <3>
+            // end::client-setup[]
+
+            // tag::client-consume[]
+            chatConsumer.addEventListener(MessageEvent.MESSAGE, function(event:MessageEvent):void { // <1>
+                chatArea.text = chatArea.text + event.message.body + "\n";
+            });
+            // end::client-consume[]
+        }
+
+        private var messageNumber:int = 1;
+
+        private function send():void {
+            // tag::client-publish[]
+            var message:AsyncMessage = new AsyncMessage(); // <1>
+            message.body = "#" + (messageNumber++) + ": " + textInput.text;
+            chatProducer.send(message);
+            textInput.text = "";
+            textInput.setFocus();
+            // end::client-publish[]
+        }
+        ]]>
+    </fx:Script>
+
+    <!-- tag::client-ui[] -->
+    <s:VGroup width="100%" height="100%" gap="10" paddingBottom="10" paddingTop="10" paddingLeft="10" paddingRight="10">
+        <s:Label text="Chat Example" fontSize="20"/>
+
+        <s:TextArea id="chatArea" width="100%" height="100%"/>
+
+        <s:HGroup width="100%">
+            <s:TextInput id="textInput" width="100%" enter="send()"/> <!--1-->
+            <s:Button label="Send" click="send()"/> <!--2-->
+        </s:HGroup>
+    </s:VGroup>
+    <!-- end::client-ui[] -->
+</s:Application>

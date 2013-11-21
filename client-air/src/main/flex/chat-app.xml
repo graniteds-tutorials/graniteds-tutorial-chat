@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+
+<application xmlns="http://ns.adobe.com/air/application/2.6">
+    <id>org.graniteds.tutorial.chat</id>
+    <filename>chat</filename>
+    <name>GraniteDS Chat Tutorial</name>
+    <versionNumber>1.0.0</versionNumber>
+	
+    <initialWindow>
+        <title>GraniteDS Chat Tutorial</title>
+        <content>chat.swf</content>
+        <width>400</width>
+        <height>355</height>
+        <visible>true</visible>
+    </initialWindow>
+</application>

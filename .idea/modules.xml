@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/client-air/client-air.iml" filepath="$PROJECT_DIR$/client-air/client-air.iml" />
+      <module fileurl="file://$PROJECT_DIR$/client-flex/client-flex.iml" filepath="$PROJECT_DIR$/client-flex/client-flex.iml" />
+      <module fileurl="file://$PROJECT_DIR$/client-java/client-java.iml" filepath="$PROJECT_DIR$/client-java/client-java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/client-javafx/client-javafx.iml" filepath="$PROJECT_DIR$/client-javafx/client-javafx.iml" />
+      <module fileurl="file://$PROJECT_DIR$/graniteds-tutorial-chat.iml" filepath="$PROJECT_DIR$/graniteds-tutorial-chat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/server-servlet3/server-servlet3.iml" filepath="$PROJECT_DIR$/server-servlet3/server-servlet3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/server-spring/server-spring.iml" filepath="$PROJECT_DIR$/server-spring/server-spring.iml" />
+    </modules>
+  </component>
+</project>
+

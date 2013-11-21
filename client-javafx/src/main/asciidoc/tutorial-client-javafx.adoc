@@ -1,0 +1,68 @@
+== The JavaFX client application
+:icons: font
+:rootdir: ../../../..
+:srcdir: {rootdir}/client-javafx/src
+
+The client application is a simple JavaFX client which will publish and receive text messages from a server messaging topic.
+It's a single main class which consists in 4 parts:
+
+. Bootstrap the GraniteDS container and configure the client components
+. Define the JavaFX UI
+. Define the callback for message reception
+. Bind message publishing to the UI
+
+Here is the source code for the first bootstrap/configuration part:
+
+[[client.destination]]
+[source,java,indent=0]
+.main/java/org/graniteds/tutorial/chat/client/ChatClient.java
+----
+include::{srcdir}/main/java/org/graniteds/tutorial/chat/client/ChatClient.java[tags=client-setup]
+----
+<1> Bootstrap the GraniteDS Tide context. Note that we pass a +JavaFXApplication+ to indicate that we need JavaFX support.
+<2> Configure a +ServerSession+ object in the context.
+<3> Start the server session, initializing all required resources.
+<4> Create a producer and a consumer for the topic named +chatTopic+ (see the server definiton <<server.destination,here>>)
+ and both configured with a subtopic named +room+.
+
+The UI is a simple JavaFX form and there is absolutely no dependency or specific requirement to have it work with GraniteDS:
+
+[source,java,indent=0]
+.main/java/org/graniteds/tutorial/chat/client/ChatClient.java
+----
+include::{srcdir}/main/java/org/graniteds/tutorial/chat/client/ChatClient.java[tags=client-ui]
+----
+
+The interesting part is how to bind the button click and enter key to publish messages:
+
+[source,java,indent=0]
+.main/java/org/graniteds/tutorial/chat/client/ChatClient.java
+----
+include::{srcdir}/main/java/org/graniteds/tutorial/chat/client/ChatClient.java[tags=client-publish]
+----
+<1> We send the message using +Producer.publish+ passing the user input +textField.getText()+ as message.
+
+Next we add an asynchronous message listener on the +Consumer+ the handle incoming received messages:
+[source,java,indent=0]
+.main/java/org/graniteds/tutorial/chat/client/ChatClient.java
+----
+include::{srcdir}/main/java/org/graniteds/tutorial/chat/client/ChatClient.java[tags=client-consume]
+----
+<1> Add a message listener on the +Consumer+.
+<2> Subscribe the client +Consumer+ to the server topic. Using +get()+ at the end of the call forces a synchronous wait
+for the subscription.
+
+Next we set a close handler on the window to properly release all resources (close connections, unsubscribe channels, ...):
+
+[source,java,indent=0]
+.main/java/org/graniteds/tutorial/chat/client/ChatClient.java
+----
+include::{srcdir}/main/java/org/graniteds/tutorial/chat/client/ChatClient.java[tags=client-close]
+----
+
+Finally, here are the maven dependencies for the JavaFX module:
+[source,xml,indent=0]
+----
+include::https://raw.github.com/graniteds-tutorials/graniteds-tutorial/master/client-java-base/pom.xml[tags=maven-deps]
+include::https://raw.github.com/graniteds-tutorials/graniteds-tutorial/master/client-java-base/client-javafx/pom.xml[tags=maven-deps]
+----

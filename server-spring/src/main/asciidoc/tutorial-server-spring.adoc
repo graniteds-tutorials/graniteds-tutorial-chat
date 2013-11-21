@@ -1,0 +1,63 @@
+== The Spring server application
+:icons: font
+:rootdir: ../../../..
+:srcdir: {rootdir}/server-spring/src
+
+The server application is basically a simple Spring MVC application exposing a messaging destination. The necessary configuration
+for GraniteDS is relatively easy and consists in:
+
+* adding a listener in +web.xml+ to bootstrap GraniteDS when the application starts,
+* adding a Gravity asynchronous messaging servlet to handle long-polling connections,
+* declaring GraniteDS in the Spring application context
+* declaring a messaging destination in the Spring application context
+
+The first important file is the web application +web.xml+ which contains the basic Spring setup:
+
+[source,xml,indent=0]
+.main/webapp/WEB-INF/web.xml
+----
+include::{srcdir}/main/webapp/WEB-INF/web.xml[tags=webxml-spring]
+----
+
+And the basic GraniteDS setup (bootstrap servlet listener and asynchronous messaging servlet):
+
+[source,xml,indent=0]
+.main/webapp/WEB-INF/web.xml
+----
+include::{srcdir}/main/webapp/WEB-INF/web.xml[tags=webxml-graniteds]
+----
+<1> GraniteDS bootstrap servlet listener
+<2> Url mapping of the asynchronous servlet for GraniteDS, +/gravityamf/*+ is the recommended default
+
+The actual Spring application context is defined in +application-context.xml+, the declaration of GraniteDS simply
+consists in the +graniteds+ XML namespace declaration:
+
+[source,xml,indent=0]
+.main/resources/application-context.xml
+----
+include::{srcdir}/main/resources/application-context.xml[tags=namespace]
+----
+
+And the following bean, which declares GraniteDS in the Spring context.
+
+[source,xml,indent=0]
+.main/resources/application-context.xml
+----
+include::{srcdir}/main/resources/application-context.xml[tags=graniteds-config]
+----
+
+Next we have to declare the chat messaging destination (see the <<client.destination,client application>> where the matching
+client object is created):
+
+[[server.destination]]
+[source,java,indent=0]
+.main/resources/application-context.xml
+----
+include::{srcdir}/main/resources/application-context.xml[tags=messaging-destination]
+----
+
+Finally, here are the maven dependencies for the Spring module:
+[source,xml,indent=0]
+----
+include::https://raw.github.com/graniteds-tutorials/graniteds-tutorial/master/server-base/server-spring/pom.xml[tags=maven-deps]
+----
