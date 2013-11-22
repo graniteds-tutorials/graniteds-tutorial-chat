@@ -27,9 +27,9 @@ include::{srcdir}/main/java/org/graniteds/tutorial/chat/client/ChatClient.java[t
 Here is the source code for this class:
 
 [source,java,indent=0]
-.main/java/org/graniteds/tutorial/remoting/client/HelloWorldClient.java
+.main/java/org/graniteds/tutorial/chat/client/ChatClient.java
 ----
-include::{srcdir}/main/java/org/graniteds/tutorial/remoting/client/HelloWorldClient.java[tags=client-app]
+include::{srcdir}/main/java/org/graniteds/tutorial/chat/client/ChatClient.java[tags=client-app]
 ----
 <1> Bootstrap the GraniteDS Tide context.
 <2> Configure a +ServerSession+ object in the context.

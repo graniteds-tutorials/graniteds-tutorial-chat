@@ -6,7 +6,7 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
-        <property name="context-root" value="helloworld"/>
+        <property name="context-root" value="chat"/>
         <property name="java-output-path" value="/tutorial-remoting-server-ejb/target/classes"/>
     </wb-module>
 </project-modules>

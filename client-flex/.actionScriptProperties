@@ -15,7 +15,7 @@
     <sourceAttachmentPath/>
   </compiler>
   <applications>
-    <application path="helloworld.mxml"/>
+    <application path="chat.mxml"/>
   </applications>
   <modules/>
   <buildCSSFiles/>

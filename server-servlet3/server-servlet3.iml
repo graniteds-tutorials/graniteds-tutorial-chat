@@ -4,17 +4,8 @@
     <output url="file://$MAVEN_REPOSITORY$/org/graniteds/tutorials/tutorial-parent-server-base/1.0-SNAPSHOT/target/classes" />
     <output-test url="file://$MAVEN_REPOSITORY$/org/graniteds/tutorials/tutorial-parent-server-base/1.0-SNAPSHOT/target/test-classes" />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/../server-ejb/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/target/generated-sources" isTestSource="false" generated="true" />
-      <excludeFolder url="file://$MODULE_DIR$/../server-ejb/target/apache-tomee" />
-      <excludeFolder url="file://$MODULE_DIR$/../server-ejb/target/docs" />
-      <excludeFolder url="file://$MODULE_DIR$/../server-ejb/target/helloworld" />
-      <excludeFolder url="file://$MODULE_DIR$/target/chat" />
-      <excludeFolder url="file://$MODULE_DIR$/target/classes" />
-      <excludeFolder url="file://$MODULE_DIR$/target/maven-archiver" />
-      <excludeFolder url="file://$MODULE_DIR$/target/surefire" />
-      <excludeFolder url="file://$MODULE_DIR$/target/tomcat" />
+      <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
