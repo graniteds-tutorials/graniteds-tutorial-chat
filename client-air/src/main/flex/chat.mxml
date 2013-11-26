@@ -25,10 +25,8 @@
                 Spring.getInstance().mainServerSession.serverApp =
                         new SimpleServerApp("/chat", false, "localhost", "8080"); // <2>
 
-                chatConsumer = Spring.getInstance().mainServerSession.getConsumer("long-polling", "chatTopic"); // <3>
-                chatConsumer.topic = "room";
-                chatProducer = Spring.getInstance().mainServerSession.getProducer("long-polling", "chatTopic");
-                chatProducer.topic = "room";
+                chatConsumer = Spring.getInstance().mainServerSession.getConsumer("chatTopic", "room"); // <3>
+                chatProducer = Spring.getInstance().mainServerSession.getProducer("chatTopic" "room");
 
                 chatConsumer.subscribe(); // <4>
                 // end::client-setup[]
@@ -46,7 +44,7 @@
                 // tag::client-publish[]
                 var message:AsyncMessage = new AsyncMessage(); // <1>
                 message.body = "#" + (messageNumber++) + ": " + textInput.text;
-                chatProducer.send(message);
+                chatProducer.send(message); // <2>
                 textInput.text = "";
                 textInput.setFocus();
                 // end::client-publish[]

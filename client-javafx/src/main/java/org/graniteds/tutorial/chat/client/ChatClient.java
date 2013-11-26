@@ -46,8 +46,8 @@ public class ChatClient extends Application {
                 new ServerSession("/chat", "localhost", 8080)); // <2>
         serverSession.start(); // <3>
 
-        final Consumer chatConsumer = serverSession.getConsumer(ChannelType.LONG_POLLING, "chatTopic", "room"); // <4>
-        final Producer chatProducer = serverSession.getProducer(ChannelType.LONG_POLLING, "chatTopic", "room");
+        final Consumer chatConsumer = serverSession.getConsumer("chatTopic", "room"); // <4>
+        final Producer chatProducer = serverSession.getProducer("chatTopic", "room");
         // end::client-setup[]
 
         // tag::client-ui[]
@@ -55,7 +55,6 @@ public class ChatClient extends Application {
         grid.setMaxHeight(Double.MAX_VALUE);
         grid.setHgap(5);
         grid.setVgap(5);
-        grid.setAlignment(Pos.CENTER);
         grid.getColumnConstraints().addAll(new ColumnConstraints(), new ColumnConstraints(60));
 
         Label titleLabel = new Label("Chat Example");
@@ -103,12 +102,12 @@ public class ChatClient extends Application {
         // end::client-ui[]
 
         // tag::client-consume[]
-        chatConsumer.addMessageListener(new TopicMessageListener() {
+        chatConsumer.addMessageListener(new TopicMessageListener() { // <1>
             @Override
             public void onMessage(TopicMessageEvent event) {
                 chatArea.appendText(event.getData() + "\n");
             }
-        }); // <1>
+        });
 
         chatConsumer.subscribe().get(); // <2>
         // end::client-consume[]

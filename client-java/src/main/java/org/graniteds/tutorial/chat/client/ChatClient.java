@@ -24,20 +24,20 @@ public class ChatClient {
                 new ServerSession("/chat", "localhost", 8080)); // <2>
         serverSession.start(); //  <3>
 
-        Consumer chatConsumer = serverSession.getConsumer(ChannelType.LONG_POLLING, "chatTopic", "room"); // <4>
-        Producer chatProducer = serverSession.getProducer(ChannelType.LONG_POLLING, "chatTopic", "room"); // <5>
+        Consumer chatConsumer = serverSession.getConsumer("chatTopic", "room"); // <4>
+        Producer chatProducer = serverSession.getProducer("chatTopic", "room"); // <5>
         // end::client-app[]
 
-        // tag::client-consumer[]
-        chatConsumer.addMessageListener(new TopicMessageListener() {
+        // tag::client-consume[]
+        chatConsumer.addMessageListener(new TopicMessageListener() { // <1>
             @Override
             public void onMessage(TopicMessageEvent event) {
                 System.out.println(event.getData());
             }
         });
 
-        chatConsumer.subscribe().get();
-        // end::client-consumer[]
+        chatConsumer.subscribe().get(); // <2>
+        // end::client-consume[]
 
         for (int i = 0; i < 5000; i++) {
             // tag::client-publish[]

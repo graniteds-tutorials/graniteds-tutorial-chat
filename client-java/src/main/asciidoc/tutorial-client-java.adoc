@@ -24,29 +24,24 @@ include::{srcdir}/main/java/org/graniteds/tutorial/chat/client/ChatClient.java[t
 <4> Create a producer and a consumer for the topic named +chatTopic+ (see the server definiton <<server.destination,here>>)
  and both configured with a subtopic named +room+.
 
-Here is the source code for this class:
+Once configured, we can next setup and subscribe the message consumer:
 
 [source,java,indent=0]
 .main/java/org/graniteds/tutorial/chat/client/ChatClient.java
 ----
-include::{srcdir}/main/java/org/graniteds/tutorial/chat/client/ChatClient.java[tags=client-app]
+include::{srcdir}/main/java/org/graniteds/tutorial/chat/client/ChatClient.java[tags=client-consume]
 ----
-<1> Bootstrap the GraniteDS Tide context.
-<2> Configure a +ServerSession+ object in the context.
-<3> Configure a client proxy for the service, the name +helloWorldService+ on the client should match the name on the server.
-<4> Start the server session, initializing all required resources.
-<5> Call the remote method +hello+ with the name argument. The last argument should be a responder class which will handle
-    the asynchronous result.
-<6> The success result handler, +event.getResult()+ contains the object returned by the service method.
-<7> The fault handler logs the error information from +event.getFault()+ in case of a fault.
-<8> The remote call is always asynchronous, +get()+ does wait until the result is received. Usually it's much more recommended to handle
-    the result asynchronously in the responder.
-<9> Stop the server session, releasing all internal resources.
+<1> We add a message listener on the +Consumer+ object which simply writes the incoming messages on the system output.
+<2> We subscribe the consumer to the server topic. Note that +Consumer.subscribe()+ is asynchronous so we are using +get()+
+to synchronously wait for the result.
 
-The +ContextManager+ is supposed to be a singleton in the application so it can be accessed from anywhere. In more realistic
-cases it would be necessary to store the +ContextManager+ object somewhere in a static property.
+Next the client generates random messages and publishes them using the +Producer+ component:
 
-The configuration steps (1 to 4) should be done only once at the startup of the application.
+[source,java,indent=0]
+.main/java/org/graniteds/tutorial/chat/client/ChatClient.java
+----
+include::{srcdir}/main/java/org/graniteds/tutorial/chat/client/ChatClient.java[tags=client-publish]
+----
 
 Finally, here are the maven dependencies for the Java module:
 [source,xml,indent=0]

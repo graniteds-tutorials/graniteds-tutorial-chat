@@ -64,7 +64,7 @@ Next is the minimal AIR application descriptor:
 [source,xml,indent=0]
 .main/flex/chat-app.xml
 ----
-include::{srcdir}/main/flex/chat-app.xml
+include::{srcdir}/main/flex/chat-app.xml[]
 ----
 
 Finally here are the necessary maven dependencies and definitions to build the AIR module:
