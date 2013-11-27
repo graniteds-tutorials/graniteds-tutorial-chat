@@ -3,8 +3,6 @@ package org.graniteds.tutorial.chat.client;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -15,18 +13,17 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+
 import org.granite.client.javafx.tide.JavaFXApplication;
 import org.granite.client.messaging.Consumer;
 import org.granite.client.messaging.Producer;
 import org.granite.client.messaging.TopicMessageListener;
-import org.granite.client.messaging.channel.ChannelType;
 import org.granite.client.messaging.events.TopicMessageEvent;
 import org.granite.client.tide.Context;
 import org.granite.client.tide.impl.SimpleContextManager;
-import org.granite.client.tide.server.*;
+import org.granite.client.tide.server.ServerSession;
 
 
 public class ChatClient extends Application {

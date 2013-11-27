@@ -26,7 +26,7 @@
                         new SimpleServerApp("/chat", false, "localhost", "8080"); // <2>
 
                 chatConsumer = Spring.getInstance().mainServerSession.getConsumer("chatTopic", "room"); // <3>
-                chatProducer = Spring.getInstance().mainServerSession.getProducer("chatTopic" "room");
+                chatProducer = Spring.getInstance().mainServerSession.getProducer("chatTopic", "room");
 
                 chatConsumer.subscribe(); // <4>
                 // end::client-setup[]

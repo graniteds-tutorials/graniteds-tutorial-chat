@@ -3,16 +3,10 @@ package org.graniteds.tutorial.chat.client;
 import org.granite.client.messaging.Consumer;
 import org.granite.client.messaging.Producer;
 import org.granite.client.messaging.TopicMessageListener;
-import org.granite.client.messaging.channel.ChannelType;
 import org.granite.client.messaging.events.TopicMessageEvent;
 import org.granite.client.tide.Context;
-import org.granite.client.tide.impl.ComponentImpl;
 import org.granite.client.tide.impl.SimpleContextManager;
-import org.granite.client.tide.server.Component;
 import org.granite.client.tide.server.ServerSession;
-import org.granite.client.tide.server.TideFaultEvent;
-import org.granite.client.tide.server.TideResponder;
-import org.granite.client.tide.server.TideResultEvent;
 
 
 public class ChatClient {
