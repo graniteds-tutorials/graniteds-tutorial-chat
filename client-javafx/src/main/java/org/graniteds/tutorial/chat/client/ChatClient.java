@@ -14,7 +14,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
 import org.granite.client.javafx.tide.JavaFXApplication;
 import org.granite.client.messaging.Consumer;
