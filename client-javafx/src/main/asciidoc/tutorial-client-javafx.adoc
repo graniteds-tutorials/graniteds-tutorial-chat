@@ -52,7 +52,7 @@ include::{srcdir}/main/java/org/graniteds/tutorial/chat/client/ChatClient.java[t
 <2> Subscribe the client +Consumer+ to the server topic. Using +get()+ at the end of the call forces a synchronous wait
 for the subscription.
 
-Next we set a close handler on the window to properly release all resources (close connections, unsubscribe channels, ...):
+Next we set a stop handler on the application to properly release all resources (close connections, unsubscribe channels, ...):
 
 [source,java,indent=0]
 .main/java/org/graniteds/tutorial/chat/client/ChatClient.java
