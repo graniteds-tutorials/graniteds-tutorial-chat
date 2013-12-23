@@ -42,4 +42,37 @@ The available options for the client are:
 * flex
 * air
 
+All available builds are listed below:
+
+===== Headless Java Client (command line)
+
+----
+mvn clean install asciidoctor:process-asciidoc -Dserver=servlet3 -Dclient=java
+mvn clean install asciidoctor:process-asciidoc -Dserver=spring -Dclient=java
+----
+
+===== JavaFX Client
+
+----
+mvn clean install asciidoctor:process-asciidoc -Dserver=servlet3 -Dclient=javafx
+mvn clean install asciidoctor:process-asciidoc -Dserver=spring -Dclient=javafx
+----
+
+===== Flex Client
+
+----
+mvn clean install asciidoctor:process-asciidoc -Dserver=servlet3 -Dclient=flex
+mvn clean install asciidoctor:process-asciidoc -Dserver=spring -Dclient=flex
+----
+
+===== Air Client
+
+----
+mvn clean install asciidoctor:process-asciidoc -Dserver=servlet3 -Dclient=air
+mvn clean install asciidoctor:process-asciidoc -Dserver=spring -Dclient=air
+----
+
+Each time you launch one of the above build, a dedicated documentation is generated in
++target/docs/graniteds-tutorial-helloworld.html+. Refer to this document to know how to run the sample application
+and how its source code is designed.
 Then you can follow the instructions in the tutorial document generated in +target/docs/graniteds-tutorial-chat.html+.
