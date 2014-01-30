@@ -3,6 +3,7 @@ package org.graniteds.tutorial.chat.client;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -49,6 +50,7 @@ public class ChatClient extends Application {
 
         // tag::client-ui[]
         GridPane grid = new GridPane();
+        grid.setPadding(new Insets(10));
         grid.setMaxHeight(Double.MAX_VALUE);
         grid.setHgap(5);
         grid.setVgap(5);
@@ -90,7 +92,7 @@ public class ChatClient extends Application {
         });
         grid.add(sendButton, 1, 2);
 
-        Scene scene = new Scene(grid, 350, 350);
+        Scene scene = new Scene(grid, 340, 360);
         stage.setTitle("GraniteDS Chat Tutorial");
         stage.setScene(scene);
         stage.show();
