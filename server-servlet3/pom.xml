@@ -28,7 +28,7 @@
     <parent>
         <groupId>org.graniteds.tutorials</groupId>
         <artifactId>tutorial-parent-server-base</artifactId>
-        <version>3.0.2.GA</version>
+        <version>3.0.3.GA</version>
     </parent>
 
     <artifactId>tutorial-chat-server-servlet3</artifactId>
@@ -41,5 +41,13 @@
         <server>servlet3</server>
         <app.name>chat</app.name>
     </properties>
+    
+    <dependencies>
+         <dependency>
+        	<groupId>org.jboss.spec.javax.servlet</groupId>
+        	<artifactId>jboss-servlet-api_3.0_spec</artifactId>
+        	<version>1.0.2.Final</version>
+        </dependency>
+	</dependencies>	
 
 </project>
