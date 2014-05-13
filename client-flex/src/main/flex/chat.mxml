@@ -14,6 +14,7 @@
         import org.granite.gravity.Consumer;
         import org.granite.gravity.Producer;
         import org.granite.tide.spring.Spring;
+        import org.granite.tide.service.SimpleServerApp;
 
         private var chatConsumer:Consumer;
         private var chatProducer:Producer;
@@ -21,6 +22,7 @@
         private function init():void {
             // tag::client-setup[]
             Spring.getInstance().initApplication(); // <1>
+            Spring.getInstance().mainServerSession.serverApp = new SimpleServerApp();
 
             chatConsumer = Spring.getInstance().mainServerSession.getConsumer("chatTopic", "room"); // <2>
             chatProducer = Spring.getInstance().mainServerSession.getProducer("chatTopic", "room");
