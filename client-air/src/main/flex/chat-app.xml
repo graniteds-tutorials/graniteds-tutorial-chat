@@ -4,7 +4,7 @@
     <id>org.graniteds.tutorial.chat</id>
     <filename>chat</filename>
     <name>GraniteDS Chat Tutorial</name>
-    <versionNumber>1.0.0</versionNumber>
+    <versionNumber>3.0.4</versionNumber>
 	
     <initialWindow>
         <title>GraniteDS Chat Tutorial</title>
