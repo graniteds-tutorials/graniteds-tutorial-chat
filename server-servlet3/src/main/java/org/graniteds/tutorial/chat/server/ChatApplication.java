@@ -7,7 +7,7 @@ import org.granite.gravity.config.servlet3.MessagingDestination;
 @ServerFilter // <1>
 public class ChatApplication {
 
-    @MessagingDestination
+    @MessagingDestination(noLocal=false)
     public String chatTopic; // <2>
 }
 // end::server-filter[]
