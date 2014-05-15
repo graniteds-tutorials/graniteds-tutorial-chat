@@ -69,7 +69,7 @@ Finally here are the necessary maven dependencies and definitions to build the F
 [source,xml,indent=0]
 .client-flex/pom.xml
 ----
-include::https://raw.github.com/graniteds-tutorials/graniteds-tutorial/master/client-flex/pom.xml[tags=maven-deps]
+include::https://raw.githubusercontent.com/graniteds-tutorials/graniteds-tutorial/master/client-flex/pom.xml[tags=maven-deps]
 
-include::https://raw.github.com/graniteds-tutorials/graniteds-tutorial/master/client-flex/pom.xml[tags=maven-build-flex]
+include::https://raw.githubusercontent.com/graniteds-tutorials/graniteds-tutorial/master/client-flex/pom.xml[tags=maven-build-flex]
 ----
