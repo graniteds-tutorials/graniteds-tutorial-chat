@@ -43,7 +43,6 @@
             private function send():void {
                 // tag::client-publish[]
                 var message:AsyncMessage = new AsyncMessage(); // <1>
-                message.correlationId = null;	// Necessary due to bug in 3.1.0.M1
                 message.body = "#" + (messageNumber++) + ": " + textInput.text;
                 chatProducer.send(message); // <2>
                 textInput.text = "";
