@@ -102,11 +102,11 @@ java -jar target/jfx/app/chat.jar
 endif::[]
 
 ifeval::["{client}" == "flex"]
-To run the Flex client, browse http://localhost:8080/chat/chat.swf[^]
+To run the Flex client, browse http://localhost:8080/chat/[^]
 endif::[]
 
 ifeval::["{client}" == "air"]
-Install and run the +.air+ package built in +target/chat.air+.
+Install and run the +.air+ package built in +client-air/target/chat.air+.
 endif::[]
 
 NOTE: To run the tutorial for another combination of client and server technologies, redo everything from the start
