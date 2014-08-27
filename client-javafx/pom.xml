@@ -25,11 +25,11 @@
     <parent>
         <groupId>org.graniteds.tutorials</groupId>
         <artifactId>tutorial-parent-client-javafx</artifactId>
-        <version>3.1.0.RC1</version>
+        <version>3.1.0.GA</version>
     </parent>
 
     <artifactId>tutorial-chat-client-javafx</artifactId>
-    <version>3.1.0.RC1</version>
+    <version>3.1.0.GA</version>
     <packaging>jar</packaging>
     <name>GraniteDS Chat Tutorial - JavaFX Client</name>
 
@@ -38,5 +38,18 @@
         <app.name>chat</app.name>
         <mainclass.name>org.graniteds.tutorial.chat.client.ChatClient</mainclass.name>
     </properties>
+    
+    <dependencies>
+        <dependency>
+            <groupId>org.eclipse.jetty.websocket</groupId>
+            <artifactId>websocket-client</artifactId>
+            <version>9.1.5.v20140505</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty.websocket</groupId>
+            <artifactId>javax-websocket-client-impl</artifactId>
+            <version>9.1.5.v20140505</version>
+        </dependency>
+  	</dependencies>
 
 </project>
