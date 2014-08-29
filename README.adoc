@@ -22,13 +22,19 @@ The first step is to clone this git repository from the command line:
 git clone http://github.com/graniteds-tutorials/graniteds-tutorial-chat.git
 ----
 
-Next +cd+ in the tutorial folder and build the project and tutorial document:
+Next +cd+ in the tutorial folder and build the project and tutorial document (see next section for other options):
 
 ----
 cd graniteds-tutorial-chat
 
 mvn clean install asciidoctor:process-asciidoc -Dserver=servlet3 -Dclient=java
 ----
+
+Finally, each time you launch one of the above build, a dedicated documentation is generated in
++target/docs/graniteds-tutorial-chat.html+. Refer to this document to know how to run the sample application
+and how its source code is designed.
+
+== Available Server / Client Configurations
 
 The available options for the server are:
 
@@ -72,6 +78,3 @@ mvn clean install asciidoctor:process-asciidoc -Dserver=servlet3 -Dclient=air
 mvn clean install asciidoctor:process-asciidoc -Dserver=spring -Dclient=air
 ----
 
-Each time you launch one of the above build, a dedicated documentation is generated in
-+target/docs/graniteds-tutorial-chat.html+. Refer to this document to know how to run the sample application
-and how its source code is designed.
